@@ -13,9 +13,6 @@ body {
     display: table;
   }
   
-  .status {
-    margin-bottom: 10px;
-  }
   
   .square {
     background: #fff;
@@ -49,3 +46,18 @@ body {
     margin-left: 20px;
   }
   
+
+  .msgError {
+    color: #721c24;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    width: 50%;
+    height: 40px;
+    background-color: #f8d7da;
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    border-color: #f5c6cb;
+}
