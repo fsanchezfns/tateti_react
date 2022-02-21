@@ -6,19 +6,20 @@ class Player extends Component {
     state ={
         idBoard:null,
         name:"",
-        playing:false,
+        isPlaying:false,
         token:""
 
     }
 
+
     playBoard = async () => {
-        console.log('jugar')
         const res= await createBoard();
         console.log(res)
         if (res.status.flag=='S'){
             const idBoard = res.payload.idBoard
             const token = res.payload.token
-        this.setState({idBoard:idBoard,name:"franco",playing:true,token:token})
+            const name = res.status.message
+        this.setState({idBoard:idBoard,isPlaying:true,name:name,token:token})
     }
     else{
         console.log(res.status.message)
@@ -27,11 +28,10 @@ class Player extends Component {
     }
 
     render() {
-        if(!this.state.playing){
+        if(!this.state.isPlaying){
         return (
             <div>
-                <label> Jugador </label>
-                <input type="text" id="name"></input>
+                <div>BIENVENIDOS AL JUEGO DEL TATETI</div>
                 <button onClick={this.playBoard}> Jugar </button>
             </div>
             
@@ -39,7 +39,7 @@ class Player extends Component {
     }else{
         return(
             <div>
-                <label> JUGANDO {this.state.name} </label>
+                <label> {this.state.name} </label>
                 <Board idBoard={this.state.idBoard} token={this.state.token}/>
             </div>
             )

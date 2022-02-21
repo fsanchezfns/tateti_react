@@ -26,11 +26,7 @@ export async function createBoard(){
 
 export async function markBoard(token,idBoard,index){
     try{
-
-    console.log('tokene ' + token)
-
-    const result = await axios.put(URL_BASE+'/board/'+idBoard,{"index":index},{headers:{"Authorization":token, "Content-Type":"application/json"}});
-        
+    const result = await axios.put(URL_BASE+'/board/'+idBoard,{"index":index},{headers:{"Authorization":token, "Content-Type":"application/json"}});       
     res = result.data 
     return res    
 } catch (error){
@@ -40,3 +36,19 @@ export async function markBoard(token,idBoard,index){
     }
 
 }
+
+
+
+export async function getBoard(token,idBoard){
+    try{
+    const result = await axios.get(URL_BASE+'/board/'+idBoard,{headers:{"Authorization":token}});       
+    res = result.data 
+    return res    
+} catch (error){
+    res.status.flag = 'N'
+    res.status.message = error
+    return res
+    }
+
+}
+
